@@ -8,7 +8,7 @@ module Lib
   )
 where
 
-import           Data.Tuple                     ( swap )
+import Data.List (sort)
 
 
 digitosDe :: Integer -> [Integer]
@@ -48,7 +48,7 @@ esFeliz = esFelizAc []
 sonFelices :: [Integer] -> ([Integer], [Integer])
 sonFelices = sonFelicesAc ([], []) []
  where
-  sonFelicesAc (felices, infelices) _ [] = (felices, infelices)
+  sonFelicesAc (felices, infelices) _ [] = (sort felices, sort infelices)
   sonFelicesAc (felices, infelices) acc (x : xs)
     | x `elem` felices = sonFelicesAc (felices ++ acc, infelices) [] xs
     | x `elem` infelices || x `elem` acc = sonFelicesAc
